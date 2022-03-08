@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Password Generator</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="Develop/style.css" />
   </head>
   <body>
     <div class="wrapper">
@@ -22,7 +22,21 @@
             id="password"
             placeholder="Your Secure Password"
             aria-label="Generated Password"
-          ></textarea>
+          ></textarea> 
+        </div>
+        <div class="card-footer">
+          <button id="generate" class="btn">Set Criteria</button>
+        </div>
+        <div class = "dropdown-menu">
+          <h3>Pick AT LEAST one of the following options:</h3>
+          <input type="checkbox" id="lowercase" name="lowercase" value="Lowercase">
+          <label for="lowercase">Include Lowercase</label> <br>
+          <input type="checkbox" id="uppercase" name="uppercase" value="Uppercase">
+          <label for="uppercase">Include Uppercase</label> <br>
+          <input type="checkbox" id="number" name="number" value="Number">
+          <label for="number">Include Numbers</label> <br>
+          <input type="checkbox" id="characters" name="characters" value="Characters">
+          <label for="characters">Include Special Characters</label> <br>
         </div>
         <div class="card-footer">
           <button id="generate" class="btn">Generate Password</button>
