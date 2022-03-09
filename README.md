@@ -8,6 +8,10 @@
 - [Credits](#credits)
 - [License](#license)
 
+## Website
+
+https://callank21.github.io/password-generator/
+
 ## Description
 
 A random password generator with a drop down menu to select criteria from. The page features checkbox elements to select lowercase, uppercase, numbers, or special characters for your password. The menu also features a password length input box wherein the criteria for a password between 8 and 128 can be entered. If a number above or below that range is entered, or the user does not choose at least one criteria for characters in their password, the 'Generate Password' button does not activate. 
