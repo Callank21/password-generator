@@ -1,6 +1,6 @@
 // Assignment code here
-var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-var lowerCaseLetters = [
+var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; //number index
+var lowerCaseLetters = [ //lower case index
   "a",
   "b",
   "c",
@@ -28,7 +28,7 @@ var lowerCaseLetters = [
   "y",
   "z",
 ];
-var upperCaseLetters = [
+var upperCaseLetters = [ //uppercase index
   "A",
   "B",
   "C",
@@ -56,7 +56,7 @@ var upperCaseLetters = [
   "Y",
   "Z",
 ];
-var specialChars = [
+var specialChars = [ //special characters index
   "@",
   "%",
   "+",
@@ -81,12 +81,12 @@ var specialChars = [
   ".",
 ];
 
-var buttonOn = document.getElementById("generate").disabled = true;
-function buttonVld() {
+var buttonOn = document.getElementById("generate").disabled = true; //generate password button is default disabled
+function buttonVld() { //function checking requirements are met for inputs
   console.log(buttonOn);
   if (lengthcase > 7 && lengthcase < 129) {
     if( specialcase == true || lowercase == true || uppercase == true || numbercase == true){
-      buttonOn = document.getElementById("generate").disabled = false;
+      buttonOn = document.getElementById("generate").disabled = false; //if password length is within the range of 8 to 128 & at least one criteria equals true, then enable the button
     }
     else {
       buttonOn = document.getElementById("generate").disabled = true;
@@ -97,11 +97,11 @@ function buttonVld() {
   }
 }
 
-var lcount = 0;
-var lowercase = false;
-var lowercaseCheck = document.querySelector("#lowercase");
+var lcount = 0; //indvidual counter for each checkbox click
+var lowercase = false; // checkbox starts unchecked
+var lowercaseCheck = document.querySelector("#lowercase"); // connects checkbox 'lowercase' to variable lowerCaseCheck
 lowercaseCheck.addEventListener("click", lowerclick);
-function lowerclick() {
+function lowerclick() { // if lowercaseCheck is clicked then add one to the checkbox counter, if odd then true if even then false
   lcount++;
   if (lcount % 2 !== 0) {
     lowercase = true;
@@ -109,7 +109,7 @@ function lowerclick() {
   else {
     lowercase = false;
   }
-  buttonVld();
+  buttonVld(); //calls button validation after each button click
 }
 
 var ucount = 0;
@@ -157,23 +157,23 @@ function specialclick() {
   buttonVld();
 }
 
-var lengthcase = 0;
-var lengthCheck = document.getElementById("length");
+var lengthcase = 0; // length input starts at 0
+var lengthCheck = document.getElementById("length"); // connects the "length" input to variable length check
 lengthCheck.addEventListener("keyup", function() {
-  lengthcase = lengthCheck.value;
-  buttonVld();
+  lengthcase = lengthCheck.value; // take the value from the "length" input and inputs it into the lengthcase variable
+  buttonVld(); // calls button validation
 });
 
 function generatePassword() {
-  var passwordCreate = [];
-  var charPool = [];
+  var passwordCreate = []; // create empty array for password to be assembled in
+  var charPool = []; // create general array to connect all the character indexes above within
   
-  function randomizer(array) {
+  function randomizer(array) { // randomizer to get random outputs from
     var randomChar = Math.floor(Math.random() * array.length);
     return array[randomChar];
   }
   
-    if (lowercase == true) {
+    if (lowercase == true) { // if lowercase was checked above, then insert one lowercase value into password array and take in the character index for that category into charPool index
       charPool = charPool.concat(lowerCaseLetters);
       passwordCreate.push(randomizer(lowerCaseLetters));
     }
@@ -192,13 +192,10 @@ function generatePassword() {
       charPool = charPool.concat(specialChars);
       passwordCreate.push(randomizer(specialChars));
     }
-    console.log(charPool);
-    console.log(passwordCreate);
   
-    for(var i = lengthcase; passwordCreate.length <= i; passwordCreate.push(randomizer(charPool))) {
-      console.log(passwordCreate);
-      if (passwordCreate.length == lengthcase) {
-        return passwordCreate.toString().replaceAll(",","");
+    for(var i = lengthcase; passwordCreate.length <= i; passwordCreate.push(randomizer(charPool))) { // if the length of the password is less than the length of the desired length input, then add another random index from charPool into the password
+      if (passwordCreate.length == lengthcase) { // when the password length equals the desire password length, then return the value 
+        return passwordCreate.toString().replaceAll(",",""); // converts value to a string, toString() function put "," between each index in the string, so .replaceAll(",") removes them
       }
     }
   }
@@ -222,11 +219,11 @@ generateBtn.addEventListener("click", writePassword);
 
 
 // Drop-down menu code here
-var setCrtr = document.querySelector("#set-criteria");
-var hidden = document.querySelector("#hidden");
+var setCrtr = document.querySelector("#set-criteria"); //connects the button with variable setCrtr
+var hidden = document.querySelector("#hidden"); // connects the div has the value of 'hidden' for display to variable hidden
 
 setCrtr.addEventListener("click", dropdown);
 
-function dropdown() {
+function dropdown() { // when the set-criteria button is hit, then the display value display within the CSS id hidden is changed to "inline" which reveals the dropdown
   hidden = document.getElementById("hidden").style.display = "inline";
 }
