@@ -28,7 +28,7 @@ var lowerCaseLetters = [
   "y",
   "z",
 ];
-var upperCaseChars = [
+var upperCaseLetters = [
   "A",
   "B",
   "C",
@@ -82,8 +82,121 @@ var specialChars = [
   ".",
 ];
 
-function generatePassword() {
+var buttonOn = document.getElementById("generate").disabled = true;
+function buttonVld() {
+  console.log(buttonOn);
+  if (lengthcase > 7 && lengthcase < 129) {
+    if( specialcase == true || lowercase == true || uppercase == true || numbercase == true){
+      buttonOn = document.getElementById("generate").disabled = false;
+    }
+    else {
+      buttonOn = document.getElementById("generate").disabled = true;
+    }
+  }
+  else {
+    buttonOn = document.getElementById("generate").disabled = true;
+  }
+}
 
+var lcount = 0;
+var lowercase = false;
+var lowercaseCheck = document.querySelector("#lowercase");
+lowercaseCheck.addEventListener("click", lowerclick);
+function lowerclick() {
+  lcount++;
+  if (lcount % 2 !== 0) {
+    lowercase = true;
+  }
+  else {
+    lowercase = false;
+  }
+  buttonVld();
+}
+
+var ucount = 0;
+var uppercase = false;
+var uppercaseCheck = document.querySelector("#uppercase");
+uppercaseCheck.addEventListener("click", upperclick);
+function upperclick() {
+  ucount++;
+  if (ucount % 2 !== 0) {
+    uppercase = true;
+  }
+  else {
+    uppercase = false;
+  }
+  buttonVld();
+}
+
+var ncount = 0;
+var numbercase = false;
+var numberCheck = document.querySelector("#number");
+numberCheck.addEventListener("click", numberclick);
+function numberclick() {
+  ncount++;
+  if (ncount % 2 !== 0) {
+    numbercase = true;
+  }
+  else {
+    numbercase = false;
+  }
+  buttonVld();
+}
+
+var scount = 0;
+var specialcase = false;
+var specialCheck = document.querySelector("#characters");
+specialCheck.addEventListener("click", specialclick);
+function specialclick() {
+  scount++;
+  if (scount % 2 !== 0) {
+    specialcase = true;
+  }
+  else {
+    specialcase = false;
+  }
+  buttonVld();
+}
+
+var lengthcase = 0;
+var lengthCheck = document.getElementById("length");
+lengthCheck.addEventListener("keyup", function() {
+  lengthcase = lengthCheck.value;
+  buttonVld();
+});
+
+function generatePassword() {
+var passwordCreate = [];
+var charPool = [];
+
+function randomizer(array) {
+  var randomChar = Math.floor(Math.random() * array.length);
+  return array[randomChar];
+}
+
+  if (lowercase == true) {
+    charPool.concat(lowerCaseLetters);
+    passwordCreate.push(randomizer(lowerCaseLetters));
+  }
+
+  if (uppercase == true) {
+    charPool.concat(upperCaseLetters);
+    passwordCreate.push(randomizer(upperCaseLetters));
+  }
+  
+  if (numbercase == true) {
+    charPool.concat(numbers);
+    passwordCreate.push(randomizer(numbers));
+  }
+  
+  if (numbercase == true) {
+    charPool.concat(specialChars);
+    passwordCreate.push(randomizer(specialChars));
+  }
+
+  for( var i = 0; i < lengthcase - passwordCreate.length; i++) {
+    passwordCreate.push(randomizer(charPool));
+  }
 }
 
 // Get references to the #generate element
@@ -97,76 +210,6 @@ function writePassword() {
 
   passwordText.value = password;
 
-}
-var count = 0;
-
-var lowercase = false;
-var lowercaseCheck = document.querySelector("#lowercase");
-lowercaseCheck.addEventListener("click", lowerclick);
-function lowerclick() {
-  count++;
-  if (count % 2 !== 0) {
-    lowercase = true;
-  }
-  else {
-    lowercase = false;
-  }
-}
-
-var uppercase = false;
-var uppercaseCheck = document.querySelector("#uppercase");
-uppercaseCheck.addEventListener("click", upperclick);
-function upperclick() {
-  count++;
-  if (count % 2 !== 0) {
-    uppercase = true;
-  }
-  else {
-    uppercase = false;
-  }
-}
-
-var numbercase = false;
-var numberCheck = document.querySelector("#number");
-numberCheck.addEventListener("click", numberclick);
-function numberclick() {
-  count++;
-  if (count % 2 !== 0) {
-    numbercase = true;
-  }
-  else {
-    numbercase = false;
-  }
-}
-
-var specialcase = false;
-var specialCheck = document.querySelector("#number");
-specialCheck.addEventListener("click", specialclick);
-function specialclick() {
-  count++;
-  if (count % 2 !== 0) {
-    numbercase = true;
-  }
-  else {
-    numbercase = false;
-  }
-}
-
-var lengthcase = 0;
-var lengthCheck = document.getElementById("length");
-lengthCheck.addEventListener("keyup", function() {
-  lengthcase = lengthCheck.value;
-  console.log(lengthcase);
-});
-
-var buttonOn = document.getElementById("generate").disabled = true;
-function buttonVld() {
-  console.log("hi");
-  if (lengthcase > 7 && lengthcase < 129) {
-    if( specialcase == true || lowercase == true || uppercase == true || numbercase == true){
-      buttonOn.disabled = false;
-    }
-  }
 }
  
 
