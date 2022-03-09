@@ -69,7 +69,6 @@ var specialChars = [
   "^",
   "?",
   ":",
-  ",",
   ")",
   "(",
   "}",
@@ -166,38 +165,43 @@ lengthCheck.addEventListener("keyup", function() {
 });
 
 function generatePassword() {
-var passwordCreate = [];
-var charPool = [];
-
-function randomizer(array) {
-  var randomChar = Math.floor(Math.random() * array.length);
-  return array[randomChar];
-}
-
-  if (lowercase == true) {
-    charPool.concat(lowerCaseLetters);
-    passwordCreate.push(randomizer(lowerCaseLetters));
-  }
-
-  if (uppercase == true) {
-    charPool.concat(upperCaseLetters);
-    passwordCreate.push(randomizer(upperCaseLetters));
+  var passwordCreate = [];
+  var charPool = [];
+  
+  function randomizer(array) {
+    var randomChar = Math.floor(Math.random() * array.length);
+    return array[randomChar];
   }
   
-  if (numbercase == true) {
-    charPool.concat(numbers);
-    passwordCreate.push(randomizer(numbers));
-  }
+    if (lowercase == true) {
+      charPool = charPool.concat(lowerCaseLetters);
+      passwordCreate.push(randomizer(lowerCaseLetters));
+    }
   
-  if (numbercase == true) {
-    charPool.concat(specialChars);
-    passwordCreate.push(randomizer(specialChars));
+    if (uppercase == true) {
+      charPool = charPool.concat(upperCaseLetters);
+      passwordCreate.push(randomizer(upperCaseLetters));
+    }
+    
+    if (numbercase == true) {
+      charPool = charPool.concat(numbers);
+      passwordCreate.push(randomizer(numbers));
+    }
+    
+    if (numbercase == true) {
+      charPool = charPool.concat(specialChars);
+      passwordCreate.push(randomizer(specialChars));
+    }
+    console.log(charPool);
+    console.log(passwordCreate);
+  
+    for(var i = lengthcase; passwordCreate.length <= i; passwordCreate.push(randomizer(charPool))) {
+      console.log(passwordCreate);
+      if (passwordCreate.length == lengthcase) {
+        return passwordCreate.toString().replaceAll(",","");
+      }
+    }
   }
-
-  for( var i = 0; i < lengthcase - passwordCreate.length; i++) {
-    passwordCreate.push(randomizer(charPool));
-  }
-}
 
 // Get references to the #generate element
 
