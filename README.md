@@ -3,7 +3,7 @@
 ## Table of Contents
 
 - [Description](#Description)
-- [Built With](#Built With)
+- [Built With](#Built-With)
 - [Screenshot](#Screenshot)
 - [Credits](#credits)
 - [License](#license)
