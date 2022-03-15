@@ -19,7 +19,7 @@ A random password generator with a drop down menu to select criteria from. The p
 
 ## Screenshot
 
-    ![Gif of my website](Develop/images/app-demo.gif)
+![Gif of my website](./Develop/images/app-demo.gif)
 
 ## Credits
 Callan Keesling 

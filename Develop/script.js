@@ -188,7 +188,7 @@ function generatePassword() {
       passwordCreate.push(randomizer(numbers));
     }
     
-    if (numbercase == true) {
+    if (specialcase == true) {
       charPool = charPool.concat(specialChars);
       passwordCreate.push(randomizer(specialChars));
     }
